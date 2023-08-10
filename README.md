@@ -7,7 +7,7 @@ __Provided with no warranty. Use at your own risk.__
 Please feel free to add/change/modify/refine and issue a pull-request so we all can benefit from those changes.
 
   *  Original by Gavin Paul, Phillip Quin and Lakshitha Dantanarayana.
-  *  Modified by Fred Sukkar.
+  *  Modified by Fouad Sukkar.
   * Further refined by Victor Hernandez Moreno.
     * Change log:
       * Declaration of Authorship Changed to the new version required by GRS
