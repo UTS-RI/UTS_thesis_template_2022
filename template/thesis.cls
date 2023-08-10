@@ -1,0 +1,475 @@
+%%
+%% This is file `Thesis.cls', based on 'ECSthesis.cls', by Steve R. Gunn
+%% generated with the docstrip utility.
+%%
+%% Created by Steve R. Gunn, modified by Sunil Patel: www.sunilpatel.co.uk
+%% modified by Fouad Sukkar to match GRS-Template 2022 for Title Page and Certificate of Orinial Authorship 
+
+\NeedsTeXFormat{LaTeX2e}[1996/12/01]
+\ProvidesClass{template/thesis}
+              [2007/22/02 v1.0
+   LaTeX document class]
+\def\baseclass{book}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{\baseclass}}
+\def\@checkoptions#1#2{
+  \edef\@curroptions{\@ptionlist{\@currname.\@currext}}
+  \@tempswafalse
+  \@tfor\@this:=#2\do{
+    \@expandtwoargs\in@{,\@this,}{,\@curroptions,}
+    \ifin@ \@tempswatrue \@break@tfor \fi}
+  \let\@this\@empty
+  \if@tempswa \else \PassOptionsToClass{#1}{\baseclass}\fi
+}
+\@checkoptions{11pt}{{10pt}{11pt}{12pt}}
+\PassOptionsToClass{a4paper}{\baseclass}
+\ProcessOptions\relax
+\LoadClass{\baseclass}
+\newcommand\bhrule{\typeout{------------------------------------------------------------------------------}}
+
+\newcommand\Declaration[1]{
+\btypeout{Declaration of Authorship}
+\addtotoc{Declaration of Authorship}
+\thispagestyle{plain}
+\null\vfil
+%\vskip 60\p@
+\begin{center}{\huge\bf Certificate of Original Authorship\par}\end{center}
+%\vskip 60\p@
+{\normalsize #1}
+\vfil\vfil\null
+%\cleardoublepage
+}
+
+\newcommand\btypeout[1]{\bhrule\typeout{\space #1}\bhrule}
+\def\today{\ifcase\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space \number\year}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.0ex plus0.5ex minus0.2ex}
+\usepackage{vmargin}
+\setmarginsrb           { 40mm}  % left margin
+                        { 30mm}  % top margin
+                        { 20mm}  % right margin
+                        { 20mm}  % bottom margin
+                        {  20pt}  % head height
+                        {0.25in}  % head sep
+                        {   9pt}  % foot height
+                        { 0.3in}  % foot sep
+%\setmarginsrb           { 1.5in}  % left margin{ 0.6in}  % top margin{ 1.0in}  % right margin{ 0.8in}  % bottom margin{  20pt}  % head height{0.25in}  % head sep{   9pt}  % foot height{ 0.3in}  % foot sep
+                        
+\raggedbottom
+\setlength{\topskip}{1\topskip \@plus 5\p@}
+\doublehyphendemerits=10000       % No consecutive line hyphens.
+\brokenpenalty=10000              % No broken words across columns/pages.
+\widowpenalty=9999                % Almost no widows at bottom of page.
+\clubpenalty=9999                 % Almost no orphans at top of page.
+\interfootnotelinepenalty=9999    % Almost never break footnotes.
+\usepackage{fancyhdr}
+%\lhead[\rm\thepage]{\fancyplain{}{\sl{\rightmark}}}
+%\rhead[\fancyplain{}{\sl{\leftmark}}]{\rm\thepage}
+%\chead{}\lfoot{}\rfoot{}\cfoot{}
+\pagestyle{fancy} %format for twoside
+\fancyhf{}
+\fancyhead[LE,RO]{\rm\thepage}
+\fancyhead[RE,LO]{\nouppercase{\it\leftmark}}
+\renewcommand{\chaptermark}[1]{\btypeout{\thechapter\space #1}\markboth{\it\@chapapp\ \thechapter.\ #1}{\@chapapp\ \thechapter\ #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\usepackage{amsmath,amsfonts,amssymb,amscd,amsthm,xspace}
+\usepackage{thmtools} 
+% \theoremstyle{plain}
+% \newtheorem{example}{Example}[chapter]
+% \newtheorem{theorem}{Theorem}[chapter]
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{axiom}[theorem]{Axiom}
+% \theoremstyle{definition}
+% \newtheorem{definition}[theorem]{Definition}
+% \theoremstyle{remark}
+% \newtheorem{remark}[theorem]{Remark}
+\usepackage[centerlast,small,sc]{caption}
+\setlength{\captionmargin}{20pt}
+\newcommand{\fref}[1]{Figure~\ref{#1}}
+\newcommand{\tref}[1]{Table~\ref{#1}}
+\newcommand{\eref}[1]{Equation~\ref{#1}}
+\newcommand{\cref}[1]{Chapter~\ref{#1}}
+\newcommand{\sref}[1]{Section~\ref{#1}}
+\newcommand{\aref}[1]{Appendix~\ref{#1}}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\dbltopfraction}{.85}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dblfloatpagefraction}{.75}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%\usepackage[scriptsize]{subfigure}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{template/lstpatch}
+\usepackage[table,usenames,dvipsnames]{xcolor} % http://ctan.org/pkg/xcolor (Should appear before tikz)
+\usepackage{tikz}
+
+\usepackage[square, numbers, comma, sort&compress]{natbib} % Use the "Natbib" style for the references in the Bibliography
+\usepackage{epstopdf}
+% \usepackage[ruled]{algorithm2e}
+\usepackage{verbatim} % Needed for the "comment" environment to make LaTeX comments
+%\usepackage{vector} % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
+\usepackage{bm}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{framed,color}
+\usepackage{wrapfig}
+%use the maths fonts
+\usepackage{amsfonts}
+% \usepackage{amssymb}
+\usepackage{rotating}
+\usepackage[table]{xcolor} % http://ctan.org/pkg/xcolor
+\usepackage{hhline}
+\usepackage{tikz}
+% \usepackage{listings} %Listings package
+\usepackage{template/lstpatch} % Hack for listings package
+\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\usepackage{lipsum} % 'Lorem ipsum' text
+\usepackage{todonotes}
+\usepackage{soul}
+\soulregister\cite7
+\soulregister\ref7
+\soulregister\pageref7
+\soulregister\eqref7
+\epstopdfsetup{outdir=/tmp/}
+\usepackage[withpage]{acronym}
+
+\newcommand*{\doi}[1]{\href{http://dx.doi.org/#1}{doi: #1}}
+\usepackage[chapter]{algorithm}
+\usepackage{algpseudocode}
+
+%\renewcommand{\thesubfigure}{\alph{subfigure}} %  Changes the numbering style of the subcaptions
+
+\definecolor{shadecolor}{gray}{0.95}
+
+
+\lstset{captionpos=b,
+        frame=tb,
+        basicstyle=\scriptsize\ttfamily,
+        showstringspaces=false,
+        keepspaces=true}
+\lstdefinestyle{matlab} {
+        language=Matlab,
+        keywordstyle=\color{blue},
+        commentstyle=\color[rgb]{0.13,0.55,0.13}\em,
+        stringstyle=\color[rgb]{0.7,0,0} }
+% \usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
+%    bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=true,
+%    colorlinks,linkcolor={blue},citecolor={blue},urlcolor={red},
+%    pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
+\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
+   bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=true,
+   colorlinks,linkcolor={blue},citecolor={blue},urlcolor={red},
+   pdfstartview={FitV},unicode,breaklinks=true,hidelinks]{hyperref}
+\pdfstringdefDisableCommands{
+   \let\\\space
+}
+\newcommand*{\thesistitle}[1]{\def\thesistitlename{#1}}
+\newcommand*{\keywordsvar}[1]{\def\keywordsname{#1}}
+\newcommand*{\authors}[1]{\def\authornames{#1}}
+\newcommand*{\supervisor}[1]{\def\supname{#1}}
+\newcommand*{\cosupervisor}[1]{\def\cosupname{#1}}
+\newcommand*{\examiner}[1]{\def\examname{#1}}
+\newcommand*{\degree}[1]{\def\degreename{#1}}
+\newcommand*{\addresses}[1]{\def\addressnames{#1}}
+\newcommand*{\university}[1]{\def\univname{#1}}
+\newcommand*{\UNIVERSITY}[1]{\def\UNIVNAME{#1}}
+\newcommand*{\department}[1]{\def\deptname{#1}}
+\newcommand*{\DEPARTMENT}[1]{\def\DEPTNAME{#1}}
+\newcommand*{\group}[1]{\def\groupname{#1}}
+\newcommand*{\GROUP}[1]{\def\GROUPNAME{#1}}
+\newcommand*{\faculty}[1]{\def\facname{#1}}
+\newcommand*{\FACULTY}[1]{\def\FACNAME{#1}}
+\newcommand*{\subject}[1]{\def\subjectname{#1}}
+\newcommand*{\keywords}[1]{\def\keywordnames{#1}}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\examiner    {Examiner}
+\degree      {Engineering}
+
+\university  {\texorpdfstring{\href{http://www.uts.edu.au}
+                {University of Technology, Sydney}}
+                {University of Technology, Sydney}}
+\UNIVERSITY  {\texorpdfstring{\href{http://www.uts.edu.au}
+                {UNIVERSITY OF TECHNOLOGY, SYDNEY}}
+                {UNIVERSITY OF TECHNOLOGY, SYDNEY}}
+\department  {\texorpdfstring{\href{http://www.uts.edu.au}
+                {School of Mechanical and Mechatronic Engineering}}
+                {School of Mechanical and Mechatronic Engineering}}
+\DEPARTMENT  {\texorpdfstring{\href{http://ims.uts.edu.au/}
+                {SCHOOL OF MECHANICAL AND MECHATRONIC ENGINEERING}}
+                {SCHOOL OF MECHANICAL AND MECHATRONIC ENGINEERING}}
+\group       {\texorpdfstring{\href{http://www.uts.edu.au}
+                {School of Mechanical and Mechatronic Engineering}}
+                {School of Mechanical and Mechatronic Engineering}}
+\GROUP       {\texorpdfstring{\href{http://www.uts.edu.au}
+                {SCHOOL OF MECHANICAL AND MECHATRONIC ENGINEERING}}
+                {SCHOOL OF MECHANICAL AND MECHATRONIC ENGINEERING}}
+\faculty     {\texorpdfstring{\href{http://www.eng.uts.edu.au}
+                {Faculty of Engineering and Information Technology}}
+                {Faculty of Engineering and IT}}
+\FACULTY     {\texorpdfstring{\href{http://www.eng.uts.edu.au}
+                {FACULTY OF ENGINEERING AND INFORMATION TECHNOLOGY}}
+                {FACULTY OF ENGINEERING AND INFORMATION TECHNOLOGY}}
+\addresses   {School of Mechanical and Mechatronic Engineering, Faculty of Engineering, University of Technology, Sydney, NSW, 2007, Australia}
+\subject     {}
+\keywords    {}
+\renewcommand\maketitle{
+  \btypeout{Title Page}
+  \hypersetup{pdftitle={\@title}}
+  \hypersetup{pdfsubject=\subjectname}
+  \hypersetup{pdfauthor=\authornames}
+  \hypersetup{pdfkeywords=\keywordnames}
+  \thispagestyle{empty}
+  \begin{titlepage}
+	\begin{tikzpicture}[remember picture, overlay]
+	  \node [anchor=north west, inner xsep=3.5cm, inner ysep=-3.5cm]  at (current page.north west)
+	     {\includegraphics[height=6.5cm]{figures/uts-logo.pdf}};
+	\end{tikzpicture}
+
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \let \footnote \thanks
+    \setcounter{footnote}{0}
+    \null\vfil
+    \vskip 100\p@
+    \begin{flushleft}
+      \setlength{\parskip}{0pt}
+%      \vfill
+\begin{changemargin}{3.0cm}{0.0cm} 
+      {\huge \bf \@title \par}
+%      \vfill
+      \bigskip \bigskip
+      {\large \textbf{by \authornames} \par}
+    %   \smallskip
+    %   {\LARGE \authornames \par}
+      \bigskip
+      \bigskip
+      {\large Thesis submitted in fulfilment of the requirements for\\ the degree of\\
+      \bigskip
+      \textbf{Doctor of Philosophy} \par}
+      \bigskip
+      {\large under the supervision of \supname \par}
+      %{\LARGE Co-supervisor: \cosupname \par}
+    %   \bigskip
+      \vfill
+    %   {\large at the \par}
+    %   {\large \deptname \par}
+      {\large\textbf{\univname}\par}
+      {\large \facname \par}
+      \bigskip
+      \bigskip
+      \bigskip
+    %   {\Large  \par}
+      {\Large \@date \par}
+      \bigskip
+\end{changemargin}
+    \end{flushleft}
+    \par
+    \@thanks
+    \vfil\null
+  \end{titlepage}
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+  \cleardoublepage
+}
+\newenvironment{abstract}
+{
+  \btypeout{Abstract Page}
+  \thispagestyle{empty}
+  \null
+  \begin{center}
+    \setlength{\parskip}{0pt}
+    %\bigskip
+    \vspace{-5em}
+    {\Large \bf \thesistitlename \par}
+    \medskip
+    {\normalsize by\par \medskip \authornames \par}
+     %\bigskip \bigskip
+     \vspace{4em}
+    {\normalsize A thesis submitted in fulfilment of the requirements for the \par}
+    {\normalsize degree of Doctor of Philosophy \par}
+     \bigskip
+    \bigskip
+    {\Huge{\textit{Abstract}} \par}
+    \bigskip
+  \end{center}
+}
+{
+  \vfil\vfil\vfil\null
+  \cleardoublepage
+}
+\addtocounter{secnumdepth}{1}
+\setcounter{tocdepth}{6}
+\newcounter{dummy}
+\newcommand\addtotoc[1]{
+\refstepcounter{dummy}
+\addcontentsline{toc}{chapter}{#1}}
+\renewcommand\tableofcontents{
+\btypeout{Table of Contents}
+\addtotoc{Contents}
+\begin{spacing}{1}{
+    \setlength{\parskip}{1pt}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \@mkboth{
+           \contentsname}{\contentsname}}
+    \@starttoc{toc}
+    \if@restonecol\twocolumn\fi
+   \cleardoublepage
+}\end{spacing}
+}
+\renewcommand\listoffigures{
+\btypeout{List of Figures}
+% \addtotoc{List of Figures}
+\begin{spacing}{1}{
+    \setlength{\parskip}{1pt}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listfigurename
+      \@mkboth{\listfigurename}
+              {\listfigurename}}
+    \@starttoc{lof}
+    \if@restonecol\twocolumn\fi
+    \cleardoublepage
+}\end{spacing}
+}
+\renewcommand\listoftables{
+\btypeout{List of Tables}
+\addtotoc{List of Tables}
+\begin{spacing}{1}{
+    \setlength{\parskip}{1pt}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listtablename
+      \@mkboth{
+          \listtablename}{\listtablename}}
+    \@starttoc{lot}
+    \if@restonecol\twocolumn\fi
+    \cleardoublepage
+}\end{spacing}
+}
+\newcommand\listsymbolname{Acronyms \& Abbreviations}
+\usepackage{longtable}
+\newcommand\listofsymbols[2]{
+\btypeout{\listsymbolname}
+\addtotoc{\listsymbolname}
+    \chapter*{\listsymbolname
+      \@mkboth{
+          \listsymbolname}{\listsymbolname}}
+%\begin{longtable}[c]{#1}#2\end{longtable}
+   #1#2\par
+    \cleardoublepage
+}
+
+\newcommand\listnomenclature{Nomenclature}
+\usepackage{longtable}
+\newcommand\listofnomenclature[2]{
+\btypeout{\listnomenclature}
+\addtotoc{\listnomenclature}
+    \chapter*{\listnomenclature
+      \@mkboth{
+          \listnomenclature}{\listnomenclature}}
+\begin{longtable}[c]{#1}#2\end{longtable}\par
+    \cleardoublepage
+}
+
+\newcommand\listoftermsname{Glossary of Terms}
+\usepackage{longtable}
+\newcommand\listofterms[2]{
+\btypeout{\listoftermsname}
+\addtotoc{\listoftermsname}
+    \chapter*{\listoftermsname
+      \@mkboth{
+          \listoftermsname}{\listoftermsname}}
+
+\begin{longtable}[c]{#1}#2\end{longtable}\par
+    \cleardoublepage
+}
+
+\newcommand\foreword[1]{
+\btypeout{Foreword}
+\addtotoc{Foreword}
+\thispagestyle{plain}
+\begin{center}{\huge{\textit{Foreword}} \par}\end{center}
+{\normalsize #1}
+\vfil\vfil\null
+
+}
+
+\newcommand\acknowledgements[1]{
+\btypeout{Acknowledgements}
+\addtotoc{Acknowledgements}
+\thispagestyle{plain}
+\begin{center}{\Huge{\textit{Acknowledgements}} \par}\end{center}
+{\normalsize #1}
+\vfil\vfil\null
+
+}
+\newcommand\dedicatory[1]{
+\btypeout{Dedicatory}
+\thispagestyle{plain}
+\null\vfil
+\vskip 60\p@
+\begin{center}{\Large \sl #1}\end{center}
+\vfil\null
+\cleardoublepage
+}
+\renewcommand\backmatter{
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \addtotoc{\bibname}
+  \btypeout{\bibname}
+  \@mainmatterfalse}
+\endinput
+%%
+%% End of file `Thesis.cls'.
